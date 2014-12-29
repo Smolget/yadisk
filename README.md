@@ -21,24 +21,24 @@ $ gem install yadisk
 ```
 
 ```sh
-$ git clone https://github.com/wimnorder/ruby_yadisk.git
-$ cd ruby_yadisk
+$ git clone https://github.com/wimnorder/yadisk.git
+$ cd yadisk
 $ nano config/config.rb
 ```
 
 Для Rails будет так:
 
 ```Gemfile
-   gem 'yadisk', '1.0.2', :git => 'https://github.com/wimnorder/ruby_yadisk.git'
+   gem 'yadisk', '1.0.2', :git => 'https://github.com/wimnorder/yadisk.git'
 ```
 
-### Инструкиця по использованию
+### Инструкция по использованию
 
 ```ruby
 require 'yadisk'
 
 yadisk = Yadisk.new(APP_ID, SECRET_KEY)
-yadisk.send('file.zip', callback)
+yadisk.put('file.zip', callback)
 
 def callback
   p "Done successfully!"
