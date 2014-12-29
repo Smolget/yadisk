@@ -10,7 +10,7 @@ Yadisk - это враппер написаный на Ruby для удобно�
 This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
 
 ### Версия
-1.0.2
+1.0.3
 
 ### Установка
 
@@ -29,7 +29,7 @@ $ nano config/config.rb
 Для Rails будет так:
 
 ```Gemfile
-   gem 'yadisk', '1.0.2', :git => 'https://github.com/wimnorder/yadisk.git'
+   gem 'yadisk', '1.0.3', :git => 'https://github.com/wimnorder/yadisk.git'
 ```
 
 ### Инструкция по использованию
