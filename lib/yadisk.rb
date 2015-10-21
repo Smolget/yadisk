@@ -1,25 +1,27 @@
-﻿class Yadisk
-  def self.init
+# TODO: need to be refactored.
+
+class Yadisk
+  def initialize
     p "Yadisk init"
   end
   
-  def self.login 
+  def login 
     p "logged in..."
   end
   
-  def self.mkdir (path)
+  def mkdir (path)
     p "Making #{path}"
   end
   
-  def self.rm (path)
+  def rm (path)
     p "#{path} removed ..."
   end
   
-  def self.get (path)
+  def get (path)
     p "Getting #{path}"
   end
   
-  def self.put (path)
+  def put (path)
     p "Putting #{path}"
   end
   
