@@ -43,7 +43,7 @@ client.public_resource.get_meta(public_key:, **params)
 client.public_resource.get_link(public_key:, **params)
 client.public_resource.save(public_key:, **params)
 
-client.operation.status(operation_id:) - ok
+client.operation.status(operation_id:)
 
 client.trash.delete(**params)
 client.trash.list(path:, **params)
