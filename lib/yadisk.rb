@@ -1,32 +1,27 @@
-# TODO: need to be refactored.
+# frozen_string_literal: true
 
-class Yadisk
-  def initialize
-    p "Yadisk init"
-  end
-  
-  def login 
-    p "logged in..."
-  end
-  
-  def mkdir (path)
-    p "Making #{path}"
-  end
-  
-  def rm (path)
-    p "#{path} removed ..."
-  end
-  
-  def get (path)
-    p "Getting #{path}"
-  end
-  
-  def put (path)
-    p "Putting #{path}"
-  end
-  
-  def exists? (path)
-    p "exist || or not"
-  end
-  
+require "addressable/uri"
+require "faraday"
+require "faraday_middleware"
+require "yadisk/version"
+
+module Yadisk
+  autoload :Client, "yadisk/client"
+  autoload :Object, "yadisk/object"
+  autoload :Error,  "yadisk/error"
+  autoload :Rest,   "yadisk/rest"
+
+  autoload :Collection, "yadisk/collection"
+
+  autoload :Operation,     "yadisk/objects/operation"
+  autoload :OperationRest, "yadisk/resources/operation"
+
+  autoload :PublicRest,     "yadisk/resources/public"
+  autoload :PublicResource, "yadisk/objects/public"
+
+  autoload :Trash,     "yadisk/objects/trash"
+  autoload :TrashRest, "yadisk/resources/trash"
+
+  autoload :Disk,     "yadisk/objects/disk"
+  autoload :DiskRest, "yadisk/resources/disk"
 end

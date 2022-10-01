@@ -1,67 +1,57 @@
-# Yadisk - API wrapper around Yandex.Disk (ruby)
+# Yadisk - Yandex.Disk API client (ruby gem)
 
-Yadisk - это враппер написаный на Ruby для удобного сервиса Yandex.Disk
-
-Позволяет: 
-  - загружать файлы в облако Яндекса
-  - скачивать файлы из облака
-  - прочая магия для органзации работы с диском из приложений
-
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
-
-### Версия
-1.0.3
-
-### Установка
-
-Глобально:
+## Install
 
 ```sh
-$ gem install yadisk
+  gem install yadisk-client
 ```
+
+## Development
 
 ```sh
-$ git clone https://github.com/wimnorder/yadisk.git
-$ cd yadisk
-$ nano config/config.rb
+  gem build yadisk.gemspec && gem install yadisk-client && bundle exec rake console
 ```
 
-Для Rails будет так:
+## Available methods
 
-```Gemfile
-   gem 'yadisk', '1.0.3', :git => 'https://github.com/wimnorder/yadisk.git'
-```
-
-### Инструкция по использованию
+**Note**
+`**params` not included in requests, but will be later
+`**attributes` used in `update_meta` method only
 
 ```ruby
-require 'yadisk'
 
-yadisk = Yadisk.new(APP_ID, SECRET_KEY)
-yadisk.put('file.zip', callback)
+client = Yadisk::Client.new(api_key: 'paste your token here')
 
-def callback
-  p "Done successfully!"
-end
+client.disk.info
+client.disk.upload(src:, dest:)
+client.disk.delete(path:)
+client.disk.get_meta(path:, **params)
+
+ # client.disk.update_meta(path: "dir_or_file_path", any_key_name: "value", other_key_name: "any_value")
+client.disk.update_meta(path:, **attributes)
+client.disk.create_dir(path:)
+client.disk.copy(from:, to:, **params)
+client.disk.download(path:, **params)
+client.disk.list_files(**params) - fix! - Net::ReadTimeout with #<TCPSocket:(closed)
+client.disk.last_uploaded(**params) - fix! -  Net::ReadTimeout with #<TCPSocket:(closed)
+client.disk.move(from:, to:, **params)
+client.disk.list_public(**params)
+client.disk.publish(path:, **params)
+client.disk.unpublish(path:, **params)
+
+client.public_resource.get_meta(public_key:, **params)
+client.public_resource.get_link(public_key:, **params)
+client.public_resource.save(public_key:, **params)
+
+client.operation.status(operation_id:) - ok
+
+client.trash.delete(**params)
+client.trash.list(path:, **params)
+client.trash.restore(path:, **params)
 ```
 
-### Совместная разработка
+## TODOs
 
-Хотите поучаствовать в разработке? Ок!
-
-* Fork
-* Commit
-* Pull-request
-* See ya changes!
-
-### Todo:
-
- - Написать тесты (RSpec)
- - Сделать wiki-страницу на Github 
- - Рефакторить код
- - Снабдить примерами
- - Отправить в рубигемс
-
-Лицензия
-----
-MIT
+- tests
+- examples
+- readme
