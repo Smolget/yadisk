@@ -1,5 +1,7 @@
 # Yadisk - Yandex.Disk API client (ruby gem)
 
+[![Gem Version](https://badge.fury.io/rb/yadisk-client.svg)](https://badge.fury.io/rb/yadisk-client)
+
 ## Install
 
 ```sh
