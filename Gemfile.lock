@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yadisk-client (1.10.1)
+    yadisk-client (1.10.2)
       addressable (~> 2.3, >= 2.3.7)
       faraday (~> 1.7)
       faraday_middleware (~> 1.1)
