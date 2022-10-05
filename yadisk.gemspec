@@ -7,18 +7,18 @@ require "yadisk/version"
 Gem::Specification.new do |s|
   s.name          = "yadisk-client"
   s.version       = Yadisk::VERSION
-  s.date          = "2014-12-23"
   s.summary       = "Yandex.Disk API client"
   s.description   = "Yandex.Disk API wrapper written in Ruby"
   s.authors       = ["Ilya Brin"]
   s.email         = "ilya@codeplay.ru"
   s.files         = `git ls-files -z`.split("\x0")
   s.executables   = s.files.grep(%r{^bin/}) {|f| File.basename(f) }
-  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
-  s.homepage      = "http://rubygems.org/gems/yadisk-client"
+  s.homepage      = "https://github.com/Smolget/yadisk"
   s.license       = "MIT"
   s.required_ruby_version = ">= 2.6"
+
+  s.metadata["rubygems_mfa_required"] = "true"
 
   s.add_dependency "addressable", "~> 2.3", ">= 2.3.7"
   s.add_dependency "faraday", "~> 1.7"

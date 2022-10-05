@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/resources/upload?path=remote_file.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 409
+      message: CONFLICT
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 05 Oct 2022 14:32:12 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '177'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"key":"value"}]}'
+  recorded_at: Wed, 05 Oct 2022 14:32:12 GMT
+recorded_with: VCR 6.1.0
