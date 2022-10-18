@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/trash/resources?path=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 13:16:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - GET, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"_embedded":{"sort":"","items":[{"name":"yadisk_created_dir","exif":{},"created":"2022-10-18T12:03:23+00:00","deleted":"2022-10-18T13:15:33+00:00","origin_path":"disk:/yadisk_created_dir","modified":"2022-10-18T13:15:33+00:00","resource_id":"12345678:eb75503df8c7eeef7e2b7b71ad9314a0f980ff3304a5577a5d8af4700f1122fc","path":"trash:/yadisk_created_dir_12b63824b98bc5eb70d25c703cfc3224a46e6896","comment_ids":{"private_resource":"12345678:eb75503df8c7eeef7e2b7b71ad9314a0f980ff3304a5577a5d8af4700f1122fc","public_resource":"12345678:eb75503df8c7eeef7e2b7b71ad9314a0f980ff3304a5577a5d8af4700f1122fc"},"type":"dir","revision":1666098933832448}],"limit":20,"offset":0,"path":"trash:/","total":1},"name":"trash","exif":{},"resource_id":"12345678:4db3a67d63d69257cf5c0c17c616e57706594e5ac747b2a478fd32ac9acc6284","origin_path":null,"modified":"2012-04-04T20:00:00+00:00","created":"2012-04-04T20:00:00+00:00","path":"trash:/","comment_ids":{},"type":"dir","revision":1333738864085459}'
+  recorded_at: Tue, 18 Oct 2022 13:16:09 GMT
+recorded_with: VCR 6.1.0

@@ -26,7 +26,7 @@ RSpec.describe "#disk" do
       }
 
       it { expect(subject).to be_an Yadisk::Link }
-      it { expect(subject.href).to eq "https://cloud-api.yandex.net/v1/disk/resources?path=disk%3A%2Fyadisk_created_dir"}
+      it { expect(subject.href).to eq "https://cloud-api.yandex.net/v1/disk/resources?path=disk%3A%2Fyadisk_created_dir" }
     end
 
     context "when dir already exists" do

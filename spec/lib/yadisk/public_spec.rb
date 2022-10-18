@@ -2,6 +2,7 @@
 
 require "spec_helper"
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe "#public" do
   let(:public_url) { "https://disk.yandex.ru/d/XzWAb9JaK605ig" }
 
@@ -41,3 +42,4 @@ RSpec.describe "#public" do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
