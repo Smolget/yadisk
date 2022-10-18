@@ -8,10 +8,12 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require_relative "../lib/yadisk"
 
+ACCESS_TOKEN = ENV["YANDEX_DISK_ACCESS_TOKEN"] || "your_access_token"
+
 RSpec.configure do |config|
   config.include CassetteHelpers
   config.before(:each) do
-    @yandex = Yadisk::Client.new(token: "your_access_token_for_e2e")
+    @yandex = Yadisk::Client.new(token: ACCESS_TOKEN)
   end
 
   config.expect_with :rspec do |c|

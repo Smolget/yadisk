@@ -1,39 +1,35 @@
 ---
 http_interactions:
 - request:
-    method: patch
-    uri: https://cloud-api.yandex.net/v1/disk/resources?path=remote_file.txt
+    method: delete
+    uri: https://cloud-api.yandex.net/v1/disk/resources?path=yadisk_test_png.png
     body:
-      encoding: UTF-8
-      string: '{"custom_properties":{"key_one":"value_1","key_two":"value_2"}}'
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - Faraday v1.10.2
       Authorization:
       - "[**********]"
-      Content-Type:
-      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 204
+      message: NO CONTENT
     headers:
       Server:
       - nginx
       Date:
-      - Wed, 05 Oct 2022 14:32:14 GMT
+      - Tue, 18 Oct 2022 11:58:56 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '0'
       Connection:
       - keep-alive
-      Vary:
-      - Accept-Encoding
       Access-Control-Allow-Methods:
       - PUT, PATCH, DELETE, GET, OPTIONS
       Access-Control-Allow-Credentials:
@@ -49,6 +45,6 @@ http_interactions:
         Authorization
     body:
       encoding: UTF-8
-      string: '{"items":[{"key":"value"}]}'
-  recorded_at: Wed, 05 Oct 2022 14:32:14 GMT
+      string: ''
+  recorded_at: Tue, 18 Oct 2022 11:58:55 GMT
 recorded_with: VCR 6.1.0

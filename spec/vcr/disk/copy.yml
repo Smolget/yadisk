@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cloud-api.yandex.net/v1/disk/resources/copy?from=remote_file.txt&path=remote_file_copy.txt
+    uri: https://cloud-api.yandex.net/v1/disk/resources/copy?from=yadisk_test_png.png&path=yadisk_test_png_copy.png
     body:
       encoding: UTF-8
       string: ''
@@ -19,19 +19,21 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 409
-      message: CONFLICT
+      code: 201
+      message: CREATED
     headers:
       Server:
       - nginx
       Date:
-      - Wed, 05 Oct 2022 14:32:16 GMT
+      - Tue, 18 Oct 2022 11:48:30 GMT
       Content-Type:
-      - application/json
+      - application/json; charset=utf-8
       Content-Length:
-      - '187'
+      - '130'
       Connection:
       - keep-alive
+      Access-Control-Allow-Methods:
+      - POST, OPTIONS
       Access-Control-Allow-Credentials:
       - 'true'
       Yandex-Cloud-Request-Id:
@@ -45,6 +47,6 @@ http_interactions:
         Authorization
     body:
       encoding: UTF-8
-      string: '{"items":[{"key":"value"}]}'
-  recorded_at: Wed, 05 Oct 2022 14:32:16 GMT
+      string: '{"href":"https://cloud-api.yandex.net/v1/disk/resources?path=disk%3A%2Fyadisk_test_png_copy.png","method":"GET","templated":false}'
+  recorded_at: Tue, 18 Oct 2022 11:48:30 GMT
 recorded_with: VCR 6.1.0

@@ -2,224 +2,227 @@
 
 require "spec_helper"
 
-# e2e vars
-# test_file_path = "spec/test_data/test_file.txt"
-test_file_name = "remote_file.txt"
-test_upload_link = ""
-
 # rubocop:disable Metrics/BlockLength
-describe Yadisk::Client do
-  # TODO: refactor by separating test cases - HOW TO DO THIS ?
-  # TODO: describe > context > it
-  context "#disk" do
-    it "#info", :vcr do
-      name = "disk/GET_info"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.info
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("get")
+RSpec.describe "#disk" do
+  describe ".info" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/info") do
+          @yandex.disk.info
         end
-        expect(resp).to be_instance_of(Yadisk::Disk)
-      end
+      }
+
+      it { expect(subject).to be_instance_of Yadisk::Disk }
+      it { expect(subject.is_paid).to be(true).or be(false) }
+    end
+  end
+
+  describe ".create_dir" do
+    context "when creating a directory is OK" do
+      subject {
+        VCR.use_cassette("disk/create_dir") do
+          @yandex.disk.create_dir path: "yadisk_created_dir"
+        end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to eq "https://cloud-api.yandex.net/v1/disk/resources?path=disk%3A%2Fyadisk_created_dir"}
     end
 
-    it "#upload", :vcr do
-      name = "disk/GET_upload"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.upload(path: test_file_name)
-        test_upload_link = resp.href
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/upload?path=remote_file.txt")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("get")
+    context "when dir already exists" do
+      subject {
+        VCR.use_cassette("disk/create_dir_error_409") do
+          @yandex.disk.create_dir path: "yadisk_created_dir"
         end
-        expect(resp).to be_instance_of(Yadisk::ResourceUploadLink)
-      end
+      }
+
+      it { expect(subject.error).to eq "DiskPathPointsToExistentDirectoryError" }
     end
+  end
 
-    # it "#upload_from_file", :vcr do
-    #   name = "disk/PUT_upload_from_file"
-    #   VCR.use_cassette(name, allow_playback_repeats: true) do
-    #     @yandex.disk.upload_from_file(upload_link: test_upload_link, src: test_file_path)
-    #     CassetteHelpers::Use.new(name) do |c|
-    #       expect(c.url).to eq(upload_link)
-    #       expect(c.code).to eq(201)
-    #       expect(c.method).to eq("put")
-    #     end
-    #   end
-    # end
-
-    it "#upload_by_url", :vcr do
-      name = "disk/POST_upload_by_url"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        path = "uploaded_by_url.png"
-        link = "https://www.example.com/image.png"
-        @yandex.disk.upload_by_url(path: path, url: link)
-
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/upload?path=#{path}&url=#{link}")
-          expect(c.code).to eq(202)
-          expect(c.method).to eq("post")
+  describe ".upload" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/upload") do
+          @yandex.disk.upload(path: "yadisk_upload_here")
         end
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::ResourceUploadLink }
+      it { expect(subject.operation_id).to be_an String }
+      it { expect(subject.href).to match %r{/uploader9x.disk.yandex.net:443/upload-target/} }
     end
+  end
 
-    it "#get_meta", :vcr do
-      name = "disk/GET_get_meta"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.get_meta(path: "remote_file.txt")
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources?path=/remote_file.txt")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("get")
+  describe ".upload_from_file" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/upload_from_file") do
+          @yandex.disk.upload_from_file(
+            upload_link: "https://uploader9x.disk.yandex.net:443/upload-target/20221018T144311.680.utd.6n9ay2kos10pewsoun8tlx7gf-k7o.674502",
+            src: "LICENSE"
+          )
         end
-        expect(resp).to be_instance_of(Yadisk::Resource)
-      end
+      }
+
+      it { expect(subject).to be true }
     end
+  end
 
-    it "#update_meta", :vcr do
-      name = "disk/PATCH_update_meta"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.update_meta(path: "remote_file.txt", key_one: "value_1", key_two: "value_2")
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("patch")
+  describe ".upload_by_url" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/upload_by_url") do
+          @yandex.disk.upload_by_url(path: "yadisk_test_png.png", url: "https://www.fnordware.com/superpng/pnggrad8rgb.png")
         end
-        expect(resp).to be_instance_of(Yadisk::Resource)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to be_an String }
     end
+  end
 
-    it "#create_dir", :vcr do
-      name = "disk/PUT_create_dir"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.create_dir(path: "test_dir")
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("get")
+  describe ".update_meta" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/update_meta") do
+          @yandex.disk.update_meta(path: "yadisk_test_png.png", key: "value")
         end
-        expect(resp).to be_instance_of(Yadisk::Link)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Resource }
+      it { expect(subject.custom_properties.key).to eq "value" }
     end
+  end
 
-    it "#copy", :vcr do
-      name = "disk/POST_copy"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.copy(from: "remote_file.txt", to: "remote_file_copy.txt")
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/copy")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("post")
+  describe ".get_meta" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/get_meta") do
+          @yandex.disk.get_meta(path: "yadisk_test_png.png")
         end
-        expect(resp).to be_instance_of(Yadisk::Link)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Resource }
+      it { expect(subject.custom_properties.key).to eq "value" }
     end
+  end
 
-    it "#download", :vcr do
-      name = "disk/GET_download"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.download(path: "remote_file.txt")
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("get")
+  describe ".copy" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/copy") do
+          @yandex.disk.copy(from: "yadisk_test_png.png", to: "yadisk_test_png_copy.png")
         end
-        expect(resp).to be_instance_of(Yadisk::Link)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to be_an String }
     end
+  end
 
-    # it "#list_files", :vcr do
-    #   name = "disk/GET_list_files"
-    #   VCR.use_cassette(name, allow_playback_repeats: true) do
-    #     @yandex.disk.list_files
-    #     CassetteHelpers::Use.new(name) do |c|
-    #       expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources")
-    #       expect(c.code).to eq(200)
-    #       expect(c.method).to eq("get")
-    #     end
-    #     expect(resp).to be_instance_of(Yadisk::Disk)
-    #   end
-    # end
-
-    # TODO: filter sensitive data
-    # it "#last_uploaded", :vcr do
-    #   name = "disk/GET_last_uploaded"
-    #   VCR.use_cassette(name, allow_playback_repeats: true) do
-    #     resp = @yandex.disk.last_uploaded
-    #     CassetteHelpers::Use.new(name) do |c|
-    #       expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources")
-    #       expect(c.code).to eq(200)
-    #       expect(c.method).to eq("get")
-    #     end
-    #     expect(resp).to be_instance_of(Yadisk::Collection)
-    #   end
-    # end
-
-    it "#move", :vcr do
-      name = "disk/POST_move"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.move(from: "remote_file_copy.txt", to: "remote_file_new_name.txt")
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/move")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("post")
+  describe ".download" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/download") do
+          @yandex.disk.download(path: "yadisk_test_png_copy.png")
         end
-        expect(resp).to be_instance_of(Yadisk::Link)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to be_an String }
+      it { expect(subject.href).not_to be nil }
     end
+  end
 
-    it "#list_public", :vcr do
-      name = "disk/GET_list_public"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.list_public
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/public")
-          expect(c.code).to eq(200)
-          expect(c.meth).to eq("get")
+  describe ".list_files" do
+    let(:limit) { "1" }
+    context "with limit param" do
+      subject {
+        VCR.use_cassette("disk/list_files") do
+          @yandex.disk.list_files(limit: limit)
         end
-        expect(resp).to be_instance_of(Yadisk::Collection)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Collection }
+      it { expect(subject.data.first).to be_an Yadisk::Resource }
     end
+  end
 
-    it "#publish", :vcr do
-      name = "disk/PUT_publish"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.publish(path: test_file_name)
-        CassetteHelpers::Use.new(name) do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/publish")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("put")
+  describe ".last_uploaded" do
+    context "whith limit param" do
+      subject {
+        VCR.use_cassette("disk/last_uploaded") do
+          @yandex.disk.last_uploaded(limit: 1)
         end
-        expect(resp).to be_instance_of(Yadisk::Link)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Collection }
+      it { expect(subject.data.first).to be_an Yadisk::Resource }
     end
+  end
 
-    it "#unpublish", :vcr do
-      name = "disk/PUT_unpublish"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        resp = @yandex.disk.unpublish(path: test_file_name)
-        CassetteHelpers::Use.new(name).url do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources/unpublish")
-          expect(c.code).to eq(200)
-          expect(c.method).to eq("put")
+  describe ".move" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/move") do
+          @yandex.disk.move(from: "yadisk_test_png_copy.png", to: "yadisk.png")
         end
-        expect(resp).to be_instance_of(Yadisk::Link)
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to be_an String }
     end
+  end
 
-    it "#delete", :vcr do
-      name = "disk/DELETE_delete"
-      VCR.use_cassette(name, allow_playback_repeats: true) do
-        @yandex.disk.delete(path: test_file_name)
-        CassetteHelpers::Use.new(name).url do |c|
-          expect(c.url).to eq("https://cloud-api.yandex.net/v1/disk/resources?path=remote_file.txt")
-          expect(c.code).to eq(204)
-          expect(c.method).to eq("delete")
+  describe ".list_public" do
+    context "whit limit param" do
+      subject {
+        VCR.use_cassette("disk/list_public") do
+          @yandex.disk.list_public(limit: 1)
         end
-      end
+      }
+
+      it { expect(subject).to be_an Yadisk::Collection }
+      it { expect(subject.data.first).to be_an Yadisk::PublicResource }
+    end
+  end
+
+  describe ".publish" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/publish") do
+          @yandex.disk.publish(path: "yadisk.png")
+        end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to be_an String }
+    end
+  end
+
+  describe ".unpublish" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/unpublish") do
+          @yandex.disk.unpublish(path: "yadisk.png")
+        end
+      }
+
+      it { expect(subject).to be_an Yadisk::Link }
+      it { expect(subject.href).to be_an String }
+    end
+  end
+
+  describe ".delete" do
+    context "when params is OK" do
+      subject {
+        VCR.use_cassette("disk/delete") do
+          @yandex.disk.delete(path: "yadisk_test_png.png")
+        end
+      }
+
+      it { expect(subject).to be_an Yadisk::Object }
     end
   end
 end

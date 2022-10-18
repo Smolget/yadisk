@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/resources/public?limit=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 11:57:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"antivirus_status":"clean","public_key":"kPhZek+XdUwHf+TUmFvY8swvYG+1woCj987654115z44oR7fpVfAessL+SzW6qgbq/J6bpmRyOJonT3VoXnDag==","public_url":"https://yadi.sk/i/ztOzg-OyVX6OlW","name":"Example.pdf","exif":{},"created":"2022-10-16T15:33:20+00:00","size":2771771,"resource_id":"12345678:ec8d5352235345aaeb467183282d275155759a433b7a5039314e579ae693093c","modified":"2022-10-16T15:33:20+00:00","comment_ids":{"private_resource":"12345678:ec8d5352235345aaeb467183282d275155759a433b7a5039314e579ae693093c","public_resource":"12345678:ec8d5352235345aaeb467183282d275155759a433b7a5039314e579ae693093c"},"mime_type":"application/pdf","file":"https://downloader.disk.yandex.ruetag=355b1b0f369c2d3bce7642fe216","media_type":"document","preview":"https://downloader.disk.yandex.ruetag=355b1b0f369c2d3bce7642fe216","path":"disk:/Example.pdf","sha256":"8897bf16f51006208ac6a4b93b0ecc39df404decff44dde7838c7e03a5e228xx","type":"file","md5":"30fb1b00069c2d3bce7642fe21639788","revision":4321564403723301}],"limit":1,"offset":0}'
+  recorded_at: Tue, 18 Oct 2022 11:57:05 GMT
+recorded_with: VCR 6.1.0

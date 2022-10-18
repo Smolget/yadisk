@@ -19,10 +19,6 @@ VCR.configure do |config|
     data.dig(:response, :headers, "Yandex-Cloud-Request-Id", 0)
   }
 
-  config.filter_sensitive_data('{"items":[{"key":"value"}]}') {|data|
-    data["response"]["body"]
-  }
-
   config.before_record do |r|
     r.response.body.force_encoding(Encoding::UTF_8)
   end

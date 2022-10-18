@@ -1,35 +1,41 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://cloud-api.yandex.net/v1/disk/resources/upload?path=remote_file.txt
+    method: put
+    uri: https://cloud-api.yandex.net/v1/disk/resources/publish?path=yadisk.png
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - Faraday v1.10.2
       Authorization:
       - "[**********]"
+      Content-Type:
+      - application/x-www-form-urlencoded
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 409
-      message: CONFLICT
+      code: 200
+      message: OK
     headers:
       Server:
       - nginx
       Date:
-      - Wed, 05 Oct 2022 14:32:12 GMT
+      - Tue, 18 Oct 2022 11:58:16 GMT
       Content-Type:
-      - application/json
-      Content-Length:
-      - '177'
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - PUT, OPTIONS
       Access-Control-Allow-Credentials:
       - 'true'
       Yandex-Cloud-Request-Id:
@@ -43,6 +49,6 @@ http_interactions:
         Authorization
     body:
       encoding: UTF-8
-      string: '{"items":[{"key":"value"}]}'
-  recorded_at: Wed, 05 Oct 2022 14:32:12 GMT
+      string: '{"href":"https://cloud-api.yandex.net/v1/disk/resources?path=disk%3A%2Fyadisk.png","method":"GET","templated":false}'
+  recorded_at: Tue, 18 Oct 2022 11:58:16 GMT
 recorded_with: VCR 6.1.0

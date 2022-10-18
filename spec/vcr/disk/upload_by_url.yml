@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cloud-api.yandex.net/v1/disk/resources/upload?path=uploaded_by_url.png&url=https://www.example.com/image.png
+    uri: https://cloud-api.yandex.net/v1/disk/resources/upload?path=yadisk_test_png.png&url=https://www.fnordware.com/superpng/pnggrad8rgb.png
     body:
       encoding: UTF-8
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 05 Oct 2022 14:32:13 GMT
+      - Tue, 18 Oct 2022 11:47:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -47,6 +47,6 @@ http_interactions:
         Authorization
     body:
       encoding: UTF-8
-      string: '{"items":[{"key":"value"}]}'
-  recorded_at: Wed, 05 Oct 2022 14:32:13 GMT
+      string: '{"href":"https://cloud-api.yandex.net/v1/disk/operations/7aeaf57f7f0da5ce8477bca07922aa491fc9836175b11caf35221cf8738f8589","method":"GET","templated":false}'
+  recorded_at: Tue, 18 Oct 2022 11:47:35 GMT
 recorded_with: VCR 6.1.0

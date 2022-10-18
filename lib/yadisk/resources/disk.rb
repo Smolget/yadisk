@@ -6,7 +6,6 @@ module Yadisk
       Disk.new get_request("disk").body
     end
 
-    # TOOO: more test cases
     def upload(path:)
       path = Addressable::URI.parse(path).normalize
       ResourceUploadLink.new get_request("disk/resources/upload?path=#{path}").body
@@ -24,7 +23,7 @@ module Yadisk
 
     def delete(path:)
       path = Addressable::URI.parse(path).normalize
-      delete_request("disk/resources?path=#{path}")
+      Object.new delete_request("disk/resources?path=#{path}").body
     end
 
     def get_meta(path:, **params)
@@ -55,13 +54,13 @@ module Yadisk
     end
 
     def list_files(**params)
-      resp = get_request("disk/resources/files", params: params).body
-      Collection.from_response(resp, key: "items", type: FilesResourceList)
+      resp = get_request("disk/resources/files", params: params)
+      Collection.from_response(resp, key: "items", type: Resource)
     end
 
     def last_uploaded(**params)
       resp = get_request("disk/resources/last-uploaded", params: params)
-      Collection.from_response(resp, key: "items", type: LastUploadedResourceList)
+      Collection.from_response(resp, key: "items", type: Resource)
     end
 
     def move(from:, to:)
@@ -72,7 +71,7 @@ module Yadisk
 
     def list_public(**params)
       resp = get_request("disk/resources/public", params: params)
-      Collection.from_response(resp, key: "items", type: PublicResourcesList)
+      Collection.from_response(resp, key: "items", type: PublicResource)
     end
 
     def publish(path:)
