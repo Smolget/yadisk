@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/public/resources?public_key=https://disk.yandex.ru/d/XzWAb9JaK605ig
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 13:05:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"public_key":"NQTCZVMpucvyX0RxjAhj7eeo+UkTPBEF8oT+nyxOV907Ja1mysOf9DCRK0U16SSFq/J6bpmRyOJonT3VoXnDag==","public_url":"https://yadi.sk/d/XzWAb9JaK605ig","_embedded":{"sort":"","public_key":"NQTCZVMpucvyX0RxjAhj7eeo+UkTPBEF8oT+nyxOV907Ja1mysOf9DCRK0U16SSFq/J6bpmRyOJonT3VoXnDag==","items":[],"limit":20,"offset":0,"path":"/","total":0},"name":"yadisk.png","exif":{},"resource_id":"12345678:e8010643f169f5d1a54b366fae73d2799404e7a4c4465062d19a74c3f81bd49f","revision":1666098182045877,"created":"2022-10-18T12:20:57+00:00","modified":"2022-10-18T12:20:57+00:00","owner":{"login":"userlogin","display_name":"Ilya","uid":"12345678"},"path":"/","comment_ids":{"private_resource":"12345678:e8010643f269f5d1a54b377fae73d2799404e8a4c4465062d19a74c3f81bd49f","public_resource":"12345678:e8010643f169f5d1a54b366fae73d2799404e7a4c4465062d19a74c3f81bd49f"},"type":"dir","views_count":0}'
+  recorded_at: Tue, 18 Oct 2022 13:05:39 GMT
+recorded_with: VCR 6.1.0
