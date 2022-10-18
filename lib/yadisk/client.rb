@@ -3,11 +3,11 @@
 module Yadisk
   class Client
     BASE_URL = "https://cloud-api.yandex.net/v1"
-    attr_reader :api_key, :adapter
+    attr_reader :token, :adapter
 
     # new client
-    def initialize(api_key:, adapter: Faraday.default_adapter, stubs: nil)
-      @api_key = api_key
+    def initialize(token:, adapter: Faraday.default_adapter, stubs: nil)
+      @token = token
       @adapter = adapter
       @stubs = stubs # Test stubs for requests
     end
@@ -30,14 +30,12 @@ module Yadisk
 
     def connection
       @connection ||= Faraday.new(BASE_URL) do |conn|
-        conn.request :authorization, :OAuth, api_key
+        conn.request :authorization, :OAuth, token
         conn.request :json
         conn.request :url_encoded
 
         conn.response :dates
         conn.response :json, content_type: "application/json"
-
-        # conn.response :logger, nil, {headers: true, bodies: true}
 
         conn.adapter adapter, @stubs
       end

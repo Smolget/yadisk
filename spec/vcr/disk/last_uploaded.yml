@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/resources/last-uploaded?limit=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 11:55:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"antivirus_status":"clean","size":976,"comment_ids":{"private_resource":"12345678:d33a07b1dbd4b443f169e56484731fab7cf5b78ae5e6b357567a3af24c6ff965","public_resource":"12345678:d33a07b1dbd4b443f169e56484731fab7cf5b78ae5e6b357567a3af24c6ff965"},"name":"yadisk_test_png.png","exif":{},"created":"2022-10-18T11:47:37+00:00","custom_properties":{"key":"value"},"resource_id":"12345678:d33a07b1dbd4b443f169e56484731fab7cf5b78ae5e6b357567a3af24c6ff965","modified":"2022-10-18T11:47:52+00:00","mime_type":"image/png","file":"https://downloader.disk.yandex.ru/disk/739d07b1e98a23b639a7ca9e3cd07d8c0f08020f0147f8156e63e0e0f5a00894/634ecc83/wQYFfZvXbSuHTOTzNLBFPm0KOuGlmqJqt-gP1pnGFp3pPxbUv3VruyBmBo9eQx6ADVGmh41pOtaWjuxNFY79JA%3D%3D?uid=12345678&filename=yadisk_test_png.png&disposition=attachment&hash=&limit=0&content_type=image%2Fpng&owner_uid=12345678&fsize=976&hid=11f9f98d69f194fd21a436fcc5f98c7e&media_type=image&tknv=v2&etag=08d91a170e2697b630465e9e9bc0b8bd","media_type":"image","preview":"https://downloader.disk.yandex.ru/preview/d619c43f6501afdbc0436ef1a31d83b3c5f81b1fef53f1bcd4dbccc67999ae95/inf/GAyQwWKMxmt5vqh3onJV2W0KOuGlmqJqt-gP1pnGFp3-zrM1ddX9qM_4XglWRw48beksfosE5iXGCDHqK0pdQw%3D%3D?uid=12345678&filename=yadisk_test_png.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=12345678&tknv=v2&size=S&crop=0","path":"disk:/yadisk_test_png.png","sha256":"48d8a840a19c51300bfe52e3d7199f73e960965f07532868962e8e11c143256d","type":"file","md5":"08d91a170e2697b630465e9e9bc0b8bd","revision":1666093672657383}],"limit":1}'
+  recorded_at: Tue, 18 Oct 2022 11:55:46 GMT
+recorded_with: VCR 6.1.0

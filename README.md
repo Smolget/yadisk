@@ -16,40 +16,42 @@
 
 ## Available methods
 
-**Note**
-`**params` not included in requests, but will be later
-`**attributes` used in `update_meta` method only
+> **Note**
+> `**params` not included in requests, but will be later  
+> `**attributes` used in `update_meta` method only
 
 ```ruby
 
-client = Yadisk::Client.new(api_key: 'paste your token here')
+client = Yadisk::Client.new(token: 'paste your token here')
 
 client.disk.info
-client.disk.upload(src:, dest:)
+client.disk.upload(path:)
+client.disk.upload_from_file(upload_link:, src:)
+client.disk.upload_by_url(path:, url:)
 client.disk.delete(path:)
 client.disk.get_meta(path:, **params)
 
  # client.disk.update_meta(path: "dir_or_file_path", any_key_name: "value", other_key_name: "any_value")
 client.disk.update_meta(path:, **attributes)
 client.disk.create_dir(path:)
-client.disk.copy(from:, to:, **params)
+client.disk.copy(from:, to:)
 client.disk.download(path:, **params)
 client.disk.list_files(**params)
 client.disk.last_uploaded(**params)
-client.disk.move(from:, to:, **params)
+client.disk.move(from:, to:)
 client.disk.list_public(**params)
-client.disk.publish(path:, **params)
-client.disk.unpublish(path:, **params)
+client.disk.publish(path:)
+client.disk.unpublish(path:)
 
-client.public_resource.get_meta(public_key:, **params)
-client.public_resource.get_link(public_key:, **params)
+client.public_resource.meta(public_key:, **params)
+client.public_resource.link(public_key:, **params)
 client.public_resource.save(public_key:, **params)
 
 client.operation.status(operation_id:)
 
-client.trash.delete(**params)
+client.trash.delete(path:, **params)
 client.trash.list(path:, **params)
-client.trash.restore(path:, **params)
+client.trash.restore(path:)
 ```
 
 ## TODOs

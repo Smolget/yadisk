@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/resources/files?limit=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 11:52:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"antivirus_status":"clean","size":1771331,"comment_ids":{"private_resource":"12345678:57c4ee83eb3ceeb2f18bc6998cc063ff0af447296298bbc8917967bcec12d603","public_resource":"12345678:57c4ee83eb3ceeb2f18bc6998cc063ff0af447296298bbc8917967bcec12d603"},"name":"BecomeAnXCoder.pdf","exif":{},"created":"2012-06-12T14:10:23+00:00","resource_id":"12345678:57c4ee83eb3ceeb2f18bc6998cc063ff0af447296298bbc8917967bcec12d603","modified":"2012-06-12T14:10:23+00:00","mime_type":"application/pdf","file":"https://downloader.disk.yandex.ru/disk/06002fb71ffd5f37d2e392a3db3d53b176d3609ea5ac0f22fa8c1883877aeca8/634ecbd5/pEuHK5PJgmPBpWoQjSxrZpcHRRVwB_1TsWpns42PAgjPJV2cd48ftYZjPa3904daujDyEoSwTRKaApGlP2uhxA%3D%3D?uid=12345678&filename=BecomeAnXCoder.pdf&disposition=attachment&hash=&limit=0&content_type=application%2Fpdf&owner_uid=12345678&fsize=1771331&hid=bdd02a4b304ef7709e0c16e0890c867b&media_type=document&tknv=v2&etag=219d5b6e0b5a90ffa95b79db1d3c8aa7","media_type":"document","preview":"https://downloader.disk.yandex.ru/preview/04a9888e87b226e2708db51e9f7e128728f6bbaee9601d8c05d5eb8486cedf0a/inf/qxNRKmaykcabm3fqiYkrOAuRPD8zF8GXv13R1x_8nRTNTo-Mh_vlq9_q8A1f9K9s36a0e1BurVcWt-gwgcJjdA%3D%3D?uid=12345678&filename=BecomeAnXCoder.pdf&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=12345678&tknv=v2&size=S&crop=0","path":"disk:/Books/BecomeAnXCoder.pdf","sha256":"c94341c8cf086bf6207f444585466fa6449576009da76c0f296e6497cadbd90b","type":"file","md5":"219d5b6e0b5a90ffa95b79db1d3c8aa7","revision":1470077346326403}],"limit":1,"offset":0}'
+  recorded_at: Tue, 18 Oct 2022 11:52:52 GMT
+recorded_with: VCR 6.1.0

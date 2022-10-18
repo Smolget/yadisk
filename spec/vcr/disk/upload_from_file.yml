@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://uploader9x.disk.yandex.net/upload-target/20221018T144311.680.utd.6n9ay2kos10pewsoun8tlx7gf-k7o.674502
+    body:
+      encoding: UTF-8
+      string: |
+        Copyright (c) 2022 Ilya Brin
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.14.2
+      Date:
+      - Tue, 18 Oct 2022 11:46:09 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=120
+      Location:
+      - "/disk/yadisk_upload_here"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST, PUT, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, Content-Length, Content-Range, X-HTTP-Method, X-Requested-With,
+        X-Disk-Uploader-Wait-Complete-Upload
+      Access-Control-Expose-Headers:
+      - Content-Length, X-Ya-Expect-Content-Length, Location
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 18 Oct 2022 11:46:08 GMT
+- request:
+    method: put
+    uri: https://uploader7o.disk.yandex.net/upload-target/20221018T144311.680.utd.6n9ay2kos10pewsoun8tlx7gf-k7o.674502
+    body:
+      encoding: UTF-8
+      string: |
+        Copyright (c) 2022 Ilya Brin
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.14.2
+      Date:
+      - Tue, 18 Oct 2022 12:29:16 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=120
+      Location:
+      - "/disk/yadisk_upload_here"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST, PUT, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, Content-Length, Content-Range, X-HTTP-Method, X-Requested-With,
+        X-Disk-Uploader-Wait-Complete-Upload
+      Access-Control-Expose-Headers:
+      - Content-Length, X-Ya-Expect-Content-Length, Location
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 18 Oct 2022 12:29:16 GMT
+recorded_with: VCR 6.1.0

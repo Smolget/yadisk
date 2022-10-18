@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cloud-api.yandex.net/v1/disk/resources/upload?path=yadisk_test_png.png&url=https://www.fnordware.com/superpng/pnggrad8rgb.png
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 202
+      message: ACCEPTED
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 11:47:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '156'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - PUT, POST, GET, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"href":"https://cloud-api.yandex.net/v1/disk/operations/7aeaf57f7f0da5ce8477bca07922aa491fc9836175b11caf35221cf8738f8589","method":"GET","templated":false}'
+  recorded_at: Tue, 18 Oct 2022 11:47:35 GMT
+recorded_with: VCR 6.1.0

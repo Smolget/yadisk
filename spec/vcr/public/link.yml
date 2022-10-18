@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key=https://disk.yandex.ru/d/XzWAb9JaK605ig
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 13:05:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+    body:
+      encoding: UTF-8
+      string: '{"href":"https://downloader.disk.yandex.ru/zip/399ab66946405cfc84e690605d097efe0ec73a89d507f054d6ffa16256c9436b/634ea51b/TlFUQ1pWTXB1Y3Z5WDBSeGpBaGo3ZWVvK1VrVFBCRUY4b1Qrbnl4T1Y5MDdKYTFteXNPZjlEQ1JLMFUxNlNTRnEvSjZicG1SeU9Kb25UM1ZvWG5EYWc9PTo=?uid=0&filename=yadisk.png.zip&disposition=attachment&hash=NQTCZVMpucvyX0RxjAhj7eeo%2BUkTPBEF8oT%2BnyxOV907Ja1mysOf9DCRK0U16SSFq/J6bpmRyOJonT3VoXnDag%3D%3D%3A&limit=0&owner_uid=12345678&tknv=v2","method":"GET","templated":false}'
+  recorded_at: Tue, 18 Oct 2022 13:05:39 GMT
+recorded_with: VCR 6.1.0

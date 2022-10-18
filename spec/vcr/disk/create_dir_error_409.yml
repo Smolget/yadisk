@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://cloud-api.yandex.net/v1/disk/resources?path=yadisk_created_dir
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.2
+      Authorization:
+      - "[**********]"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 18 Oct 2022 12:03:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '271'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Yandex-Cloud-Request-Id:
+      - omitted
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept-Language, Accept, X-Uid, X-HTTP-Method, X-Requested-With, Content-Type,
+        Authorization
+      X-Envoy-Upstream-Service-Time:
+      - '249'
+    body:
+      encoding: UTF-8
+      string: '{"message":"По указанному пути \"yadisk_created_dir\" уже существует
+        папка с таким именем.","description":"Specified path \"yadisk_created_dir\"
+        points to existent directory.","error":"DiskPathPointsToExistentDirectoryError"}'
+  recorded_at: Tue, 18 Oct 2022 12:03:23 GMT
+recorded_with: VCR 6.1.0
