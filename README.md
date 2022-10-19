@@ -11,10 +11,14 @@
   gem install yadisk-client
 ```
 
+```gemfile
+  gem 'yadisk-client', '~> 1.11', '>= 1.11.1'
+```
+
 ## Development
 
 ```sh
-  gem build yadisk.gemspec && gem install yadisk-client && bundle exec rake console
+  rake console
 ```
 
 ## Available methods
