@@ -11,6 +11,7 @@
   gem install yadisk-client
 ```
 
+Gemfile
 ```gemfile
   gem 'yadisk-client', '~> 1.11', '>= 1.11.1'
 ```
