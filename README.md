@@ -1,6 +1,9 @@
 # Yadisk - Yandex.Disk API client (ruby gem)
 
 [![Gem Version](https://badge.fury.io/rb/yadisk-client.svg)](https://badge.fury.io/rb/yadisk-client)
+![Gem](https://img.shields.io/gem/dt/yadisk-client)
+[![Ruby specs](https://github.com/Smolget/yadisk/actions/workflows/CI.yml/badge.svg)](https://github.com/Smolget/yadisk/actions/workflows/CI.yml)
+[![Coverage Status](https://coveralls.io/repos/github/Smolget/yadisk-client/badge.svg?branch=master)](https://coveralls.io/github/Smolget/yadisk-client?branch=master)
 
 ## Install
 
@@ -8,10 +11,15 @@
   gem install yadisk-client
 ```
 
+Gemfile
+```gemfile
+  gem 'yadisk-client', '~> 1.11', '>= 1.11.1'
+```
+
 ## Development
 
 ```sh
-  gem build yadisk.gemspec && gem install yadisk-client && bundle exec rake console
+  rake console
 ```
 
 ## Available methods
@@ -56,6 +64,6 @@ client.trash.restore(path:)
 
 ## TODOs
 
-- tests
+- ~~tests~~
 - examples
-- readme
+- ~~readme~~
