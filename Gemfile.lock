@@ -88,7 +88,7 @@ GEM
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
-    simplecov-lcov (0.7.0)
+    simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
     standard (1.16.1)
       rubocop (= 1.35.1)
@@ -103,6 +103,7 @@ GEM
 PLATFORMS
   universal-darwin-21
   x86_64-darwin-17
+  x86_64-linux
 
 DEPENDENCIES
   addressable (~> 2.3, >= 2.3.7)
@@ -111,7 +112,7 @@ DEPENDENCIES
   rake
   rspec
   simplecov (~> 0.9)
-  simplecov-lcov (~> 0.7.0)
+  simplecov-lcov (~> 0.8.0)
   standard
   vcr
   webmock
