@@ -11,5 +11,5 @@ RSpec.describe Yadisk::Client do
 end
 
 RSpec.describe Yadisk do
-  it { expect(described_class::VERSION).to eq "1.11.1" }
+  it { expect(described_class::VERSION).to eq "1.11.2" }
 end

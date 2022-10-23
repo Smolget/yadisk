@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description   = "Yandex.Disk API wrapper written in Ruby"
   s.authors       = ["Ilya Brin"]
   s.email         = "ilya@codeplay.ru"
-  s.files         = `git ls-files -z`.split("\x0")
+  s.files         = `git ls-files`.split($RS).reject {|fn| fn.start_with? "spec" }
   s.executables   = s.files.grep(%r{^bin/}) {|f| File.basename(f) }
   s.require_paths = ["lib"]
   s.homepage      = "https://github.com/Smolget/yadisk"

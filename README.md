@@ -12,8 +12,9 @@
 ```
 
 Gemfile
+
 ```gemfile
-  gem 'yadisk-client', '~> 1.11', '>= 1.11.1'
+  gem 'yadisk-client', '~> 1.11', '>= 1.11.2'
 ```
 
 ## Development

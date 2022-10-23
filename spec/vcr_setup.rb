@@ -25,7 +25,6 @@ VCR.configure do |config|
 
   config.default_cassette_options = {
     record: :new_episodes,
-    re_record_interval: 259_200,
     match_requests_on: %i[method uri body]
   }
 end
