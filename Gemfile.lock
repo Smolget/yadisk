@@ -43,7 +43,7 @@ GEM
     hashdiff (1.0.1)
     multipart-post (2.2.3)
     public_suffix (5.0.0)
-    rake (12.3.3)
+    rake (13.0.6)
     rexml (3.2.5)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -78,7 +78,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  rake (~> 12.3.3)
+  rake (~> 13.0.6)
   rspec (~> 3.0)
   simplecov (~> 0.9)
   simplecov-lcov (~> 0.8.0)
