@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.metadata["rubygems_mfa_required"] = "true"
 
   s.add_dependency "addressable", "~> 2.3", ">= 2.3.7"
-  s.add_dependency "faraday", "~> 1.7"
+  s.add_dependency "faraday", ">= 1.7", "< 3.0"
   s.add_dependency "faraday_middleware", "~> 1.1"
 
   s.add_development_dependency "bundler"
