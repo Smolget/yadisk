@@ -9,7 +9,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.1)
+    addressable (2.8.3)
       public_suffix (>= 2.0.2, < 6.0)
     crack (0.4.5)
       rexml
@@ -42,7 +42,7 @@ GEM
       faraday (~> 1.0)
     hashdiff (1.0.1)
     multipart-post (2.2.3)
-    public_suffix (5.0.0)
+    public_suffix (5.0.1)
     rake (13.0.6)
     rexml (3.2.5)
     rspec (3.12.0)
